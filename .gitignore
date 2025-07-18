@@ -1,0 +1,11 @@
+*.pyc
+__pycache__/
+*.log
+*.swp
+*.bak
+.idea/
+.vscode/
+.env
+*.zip
+*.tar.gz
+
