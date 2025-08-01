@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <record id="action_report_saleorder_closed_offer" model="ir.actions.report">
-        <field name="name">Kapalı Teklif</field>
+
+
+
+
+
+ <record id="action_report_saleorder_custom" model="ir.actions.report">
+        <field name="name">Teklif / Sipariş (Özel)</field>
         <field name="model">sale.order</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">ozenel_reports.report_saleorder_closed_offer</field>
-        <field name="report_file">ozenel_reports.report_saleorder_closed_offer</field>
-        <field name="print_report_name">
-            (object.state in ('draft', 'sent') and 'Kapalı Teklif - %s' % (object.name)) or 'Sipariş - %s' % (object.name)
-        </field>
+        <field name="report_name">ozenel_reports.report_saleorder_ozenel_cover_layout</field>
+        <field name="report_file">ozenel_reports.report_saleorder_ozenel_cover_layout</field>
+        <field name="paperformat_id" ref="ozenel_reports.paperformat_ozenel_sale_order"/>
+
         <field name="binding_model_id" ref="sale.model_sale_order"/>
         <field name="binding_type">report</field>
     </record>
 
-     <record id="action_report_saleorder_groupped_offer" model="ir.actions.report">
+    <record id="action_report_saleorder_groupped_offer" model="ir.actions.report">
         <field name="name">Gruplu Kapalı Teklif</field>
         <field name="model">sale.order</field>
         <field name="report_type">qweb-pdf</field>

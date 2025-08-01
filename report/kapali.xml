@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_saleorder_document_closed_offer_content_no_layout">
+        <t t-call="web.minimal_layout">
+            <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
+            <div class="page">
+
+                <div class="custom-header" >
+                    <div class="header-logo">
+                        <img t-if="doc.company_id.logo" t-att-src="image_data_uri(doc.company_id.logo)"/>
+                    </div>
+                    <div class="header-company-info">
+                        <strong t-field="doc.company_id.name"/><br/>
+                        <span t-field="doc.company_id.partner_id.street"/><br/>
+                        Selçuk V.D. <span t-field="doc.company_id.vat"/><br/>
+                        Tel: <span t-field="doc.company_id.phone"/> | <span t-field="doc.company_id.website"/>
+                    </div>
+                </div>
+
+                <div style="margin-top: auto; background-color: #e9ecef; border: 2px dashed #adb5bd; padding: 1rem; text-align: center; color: #6c757d;">
+                    Burası "İtici Element". 'margin-top: auto' stili sayesinde üstündeki her şeyi yukarı yaslar.
+                </div>
+
+            </div>
+        </t>
+    </template>
+
+    <template id="report_saleorder_ozenel_cover_layout">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="ozenel_reports.report_saleorder_document_closed_offer_content_no_layout" />
+            </t>
+        </t>
+    </template>
+</odoo>

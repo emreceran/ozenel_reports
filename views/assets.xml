@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_report_custom_styles" inherit_id="web.assets_report">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/css" href="/ozenel_reports/static/src/css/report_styles.css"/>
+        </xpath>
+    </template>
+</odoo>
