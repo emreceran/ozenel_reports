@@ -5,6 +5,12 @@ class SaleOrderLine(models.Model):
 
     x_brand_name = fields.Char(string='Marka')
 
+    # Kullanıcının manuel sayfa sonu istemesi için yeni bir alan ekliyoruz.
+    x_force_page_break = fields.Boolean(
+        string="Yeni Sayfada Başlat",
+        help="Bu seçenek işaretlenirse, rapor yazdırılırken bu satırdan sonra yeni bir sayfa başlar."
+    )
+
     @api.onchange('product_id')
     def _onchange_product_id_brand(self):
         for line in self:

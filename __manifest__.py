@@ -10,7 +10,9 @@
         'views/sale_order_line_views.xml',
         'report/sale_report.xml',
         'report/kapali.xml',
-        'report/report_kapali.xml',
+        'report/report_cover_page.xml',
+        'report/report_sale_order_body.xml',
+        'report/sale_report_views.xml',
 
 
     ],

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="template_sale_order_cover">
+            <div class="page text-dark" style="font-family:'Roboto',sans-serif; font-size:10px;">
+
+                <div class="content-wrapper" style="padding: 0 10mm 0 10mm;">
+
+                    <div class="row" style="font-family:'Times New Roman',sans-serif; align-items: center;">
+                        <div class="col-6">
+                            <img t-if="res_company.logo" t-att-src="image_data_uri(res_company.logo)" alt="Logo" style="max-height:100px;" />
+                        </div>
+                        <div class="col-6 text-end mt-3" style="font-size:11px; line-height: 1.5;">
+                            <div t-if="res_company.name" style="font-weight:bold; text-transform: uppercase;">
+                                <span> ÖZENEL ENERJİ MÜH. ELEKTRİK İNŞ. TURİZM SAN. TİC. LTD. ŞTİ.</span>
+                            </div>
+                            <div t-if="res_company.street or res_company.city">
+                                <span> Fevzi çakmak mh. 10644 sk. no:42 Karatay/KONYA</span>
+                            </div>
+                            <div t-if="res_company.vat">
+                                Selçuk V.D. <span t-field="res_company.vat"/>
+                            </div>
+                            <div class="">
+                                <strong t-if="res_company.phone">
+                                    <!--                                    <i class="fa fa-phone" role="img" aria-label="Phone" title="Phone"/> -->
+                                    <span t-field="res_company.phone"/>
+                                </strong>
+                                <strong t-if="res_company.website" class="ms-3">
+                                    <!--                                    <i class="fa fa-globe" role="img" aria-label="Website" title="Website"/> -->
+                                    <span t-field="res_company.website"/>
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row align-items-center justify-content-between" style="margin-top: 80px; align-items: center;">
+                        <div class="col-5">
+                            <div style="background-color: #0B2B4B; color: white; padding: 25px 40px; text-align: center; display: inline-block;">
+                                <h2 style="margin: 0; font-weight: bold; font-family: sans-serif;">TEKLİF</h2>
+                                <p style="margin: 0; letter-spacing: 4px; font-family: sans-serif;">OFFER</p>
+                            </div>
+                        </div>
+
+                        <div class="col-7">
+                            <div style="border-left: 6px solid #0B2B4B; padding-left: 20px;">
+                                <h5 style="font-weight: bold; margin-bottom: 10px; font-family: sans-serif; color: #0B2B4B; font-size: 16px;">TEKLİF BİLGİLERİ</h5>
+                                <table style="width: 100%; font-size: 12px; border-collapse: separate; border-spacing: 0 2px;">
+                                    <tbody>
+                                        <tr style="background-color: #f2f2f2;">
+                                            <td style="padding: 4px 10px; width: 45%;">Teklif No :</td>
+                                            <td style="padding: 4px 10px;"><strong><span t-field="doc.name"/></strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 4px 10px;">Teklif Tarihi :</td>
+                                            <td style="padding: 4px 10px;"><strong><span t-field="doc.date_order" t-options='{"format": "dd.MM.yyyy"}'/></strong></td>
+                                        </tr>
+                                        <tr style="background-color: #f2f2f2;">
+                                            <td style="padding: 4px 10px;">Geçerlilik :</td>
+                                            <td style="padding: 4px 10px;"><strong><span t-field="doc.validity_date" t-options='{"format": "dd.MM.yyyy"}'/></strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 4px 10px;">Satış Temsilcisi :</td>
+                                            <td style="padding: 4px 10px;"><strong><span t-field="doc.user_id.name"/></strong></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 50px; font-family: sans-serif;">
+                        <div style="background-color: #0B2B4B; color: white; text-align: center; padding: 8px; font-size: 14px; font-weight: bold; text-transform: uppercase;">
+                            MÜŞTERİ BİLGİLERİ
+                        </div>
+                        <table class="table table-sm table-borderless" style="margin-top: 15px; font-size: 13px;">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 15%; font-weight: bold;">Firma :</td>
+                                    <td><span t-field="doc.partner_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 15%; font-weight: bold;">Adres :</td>
+                                    <td>
+                                        <span t-field="doc.partner_id.street"/>
+                                        <t t-if="doc.partner_id.street2"> <span t-field="doc.partner_id.street2"/></t>
+                                        <span t-field="doc.partner_id.city"/> / <span t-field="doc.partner_id.state_id.name"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 15%; font-weight: bold;">VKN/TCKN :</td>
+                                    <td><span t-field="doc.partner_id.vat"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div style="margin-top: 40px; font-family: sans-serif;">
+                        <div style="border: 1px solid #777; text-align: center; padding: 10px; font-size: 14px; font-weight: bold;">
+                            TEKLİF KONUSU
+                        </div>
+                        <div style="text-align: center; margin-top: 20px; font-size: 13px; color: #333;">
+                            <p style="margin-bottom: 5px;">Firmamızdan talep ettiğiniz ürünlere ait ayrıntılı fiyat teklifimiz ekte yer almaktadır.</p>
+                            <p style="margin: 0;">Her türlü tamamlayıcı bilgi ihtiyacı ve sorularınız için bize ulaşabilirsiniz.</p>
+                        </div>
+                    </div>
+
+                    <div class="clearfix" name="so_total_summary" style="margin-top: 40px; font-family: sans-serif;">
+                        <div style="background-color: #0B2B4B; color: white; text-align: center; padding: 8px; font-size: 14px; font-weight: bold; text-transform: uppercase;">
+                            FİYAT TEKLİFİMİZ
+                        </div>
+                        <div class="row justify-content-between" style="margin-top: 15px;">
+                            <div class="col-12">
+                                <table style="width: 100%; font-size: 13px; " class="table-borderless">
+                                    <tbody>
+                                        <tr style="border-bottom: 1px solid #ddd;">
+                                            <td style="padding: 8px 0px;"><strong>Toplam :</strong></td>
+                                            <td class="text-end" style="padding: 8px 0px;">192.500,00 ₺</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 8px 0px;"><strong>KDV %20 :</strong></td>
+                                            <td class="text-end" style="padding: 8px 0px;">190.971,20 ₺</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix" style="margin-top: 3px;">
+                        <div style="position:fixed; right:0; width: 58%; background-color: #0B2B4B; color: white; padding: 10px 10px;">
+                            <table style="width: 100%; font-size: 14px;" class="table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <td class="text-start"><strong>GENEL TOPLAM :</strong></td>
+                                        <td class="text-end"><strong style="white-space: nowrap;margin-right:10px;">1.145.827,20 ₺</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div style="font-family: sans-serif; margin-top: 50px; font-size: 11px;">
+                        <strong>GENEL ŞARTLAR</strong>
+                        <ul style="padding-left: 1.5em; margin-top: 5px; list-style-type: disc;">
+                            <li>Ödeme sistemi Teklif Onayını müteakip %50 Peşin olarak</li>
+                            <li>İş bitimi Geri Kalan Ödemenin tamamı alınacaktır.</li>
+                            <li>Teklif geçerlilik süresi 15 gündür.</li>
+                            <li>Müşteri ve imalatçı sebepleriyle oluşacak değişiklikler fiyata yansıtılacaktır.</li>
+                            <li>Teklife KDV dahil olmayıp fatura tutarına yansıtılacaktır.</li>
+                            <li>Döviz kurlarında oluşabilecek farklar fiyata yansıtılacaktır.</li>
+                        </ul>
+                    </div>
+
+                    <div class="row" style="margin-top: 50px; margin-bottom: 50px; font-family: sans-serif; font-size: 13px;">
+                        <div class="col-6">
+                            <strong>ONAYLAYAN</strong>
+                            <br/><br/><br/>
+                            <span>Kaşe / İMZA</span>
+                        </div>
+                        <div class="col-6 text-end">
+                            <strong>TEKLİF VEREN</strong>
+                            <br/><br/><br/>
+                            <span>Kaşe / İMZA</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </template>
+    </data>
+</odoo>
