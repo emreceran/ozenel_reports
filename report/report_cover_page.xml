@@ -115,11 +115,11 @@
                                     <tbody>
                                         <tr style="border-bottom: 1px solid #ddd;">
                                             <td style="padding: 8px 0px;"><strong>Toplam :</strong></td>
-                                            <td class="text-end" style="padding: 8px 0px;">192.500,00 ₺</td>
+                                            <td class="text-end" style="padding: 8px 0px;"> <span t-field="doc.amount_untaxed" /></td>
                                         </tr>
                                         <tr>
                                             <td style="padding: 8px 0px;"><strong>KDV %20 :</strong></td>
-                                            <td class="text-end" style="padding: 8px 0px;">190.971,20 ₺</td>
+                                            <td class="text-end" style="padding: 8px 0px;"> <span t-field="doc.amount_tax" /></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -132,7 +132,7 @@
                                 <tbody>
                                     <tr>
                                         <td class="text-start"><strong>GENEL TOPLAM :</strong></td>
-                                        <td class="text-end"><strong style="white-space: nowrap;margin-right:10px;">1.145.827,20 ₺</strong></td>
+                                        <td class="text-end"><strong style="white-space: nowrap;margin-right:10px;"> <span t-field="doc.amount_total" /></strong></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -140,15 +140,8 @@
                     </div>
 
                     <div style="font-family: sans-serif; margin-top: 50px; font-size: 11px;">
-                        <strong>GENEL ŞARTLAR</strong>
-                        <ul style="padding-left: 1.5em; margin-top: 5px; list-style-type: disc;">
-                            <li>Ödeme sistemi Teklif Onayını müteakip %50 Peşin olarak</li>
-                            <li>İş bitimi Geri Kalan Ödemenin tamamı alınacaktır.</li>
-                            <li>Teklif geçerlilik süresi 15 gündür.</li>
-                            <li>Müşteri ve imalatçı sebepleriyle oluşacak değişiklikler fiyata yansıtılacaktır.</li>
-                            <li>Teklife KDV dahil olmayıp fatura tutarına yansıtılacaktır.</li>
-                            <li>Döviz kurlarında oluşabilecek farklar fiyata yansıtılacaktır.</li>
-                        </ul>
+                        <span t-field="doc.note" t-attf-style="#{'text-align:justify;text-justify:inter-word;' if doc.company_id.terms_type != 'html' else ''}" name="order_note"/>
+
                     </div>
 
                     <div class="row" style="margin-top: 50px; margin-bottom: 50px; font-family: sans-serif; font-size: 13px;">

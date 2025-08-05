@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="template_sale_order_body_subtotal">
+            <style type="text/css">
+                .bordered-tbody > tbody > tr {
+                border-top: 1px solid #dee2e6;
+                }
+            </style>
+            <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)" />
+            <t t-set="lines_to_report" t-value="doc._get_order_lines_to_report()"/>
+
+            <table class="table table-borderless bordered-tbody mx-auto" style="width: 90%;">
+                <thead style="display: table-header-group;">
+                    <tr>
+                        <td colspan="2" style="padding: 0 0 20px 0;">
+                            <img t-if="res_company.logo" t-att-src="image_data_uri(res_company.logo)" alt="Logo" style="max-height:100px;" />
+                        </td>
+                        <td colspan="2" class="text-end" style="font-size:11px; line-height: 1.5; padding: 0 0 20px 0; vertical-align: top;">
+                            </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="4" style="padding-top: 20px; padding-bottom: 20px;">
+                            <h4 style="font-size: 14px; margin:0;">TEKLİF MALZEME LİSTESİ</h4>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="4" style="padding: 0; border: none;">
+                            <div style="background-color: #0B2B4B; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                                <table style="width: 100%; color: white; text-transform: uppercase; font-size: 10px; font-weight: bold;">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-start" style="width: 55%; padding: 8px;  border-right: 1px solid #3a5a7b;">Malzeme İsmi Ve Özellikleri</td>
+                                            <td class="text-center" style="width: 15%;  padding: 8px; border-right: 1px solid #3a5a7b;">Marka</td>
+                                            <td class="text-center" style="width: 15%; padding: 8px; border-right: 1px solid #3a5a7b;">Miktarı</td>
+                                            <td class="text-center" style="width: 15%; padding: 8px;">Birim</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </thead>
+
+                <tbody class="sale_tbody">
+                    <t t-set="current_subtotal" t-value="0"/>
+                    <t t-set="current_section" t-value="None"/>
+                    <t t-foreach="lines_to_report" t-as="line">
+                        <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal" />
+                        <t t-if="line.display_type == 'line_section'">
+                            <t t-set="current_section" t-value="line"/>
+                            <t t-set="current_subtotal" t-value="0"/>
+                            <tr style="background-color:#0B2B4B; font-weight: bold;">
+                                <td name="td_section_line" colspan="4" style="padding: 5px 8px;">
+                                    <span t-field="line.name" style="color:white;"/>
+                                </td>
+                            </tr>
+                        </t>
+                        <t t-if="not line.display_type">
+                            <tr>
+                                <td style="width: 55%; font-size: 10px;"><span t-field="line.product_id.name"/></td>
+                                <td class="text-center" style="width: 15%; font-size: 10px;"><span t-field="line.x_brand_name"/></td>
+                                <td class="text-center" style="width: 15%; font-size: 10px;"><span t-field="line.product_uom_qty"/></td>
+                                <td class="text-center" style="width: 15%; font-size: 10px;"><span t-field="line.product_uom"/></td>
+                            </tr>
+                        </t>
+                        <t t-if="current_section and (line_last or doc.order_line[line_index+1].display_type == 'line_section')">
+                            <tr class="is-subtotal text-end">
+                                <td colspan="4">
+                                    <div style="display: inline-block; background-color:#0B2B4B; color:white; padding: 5px 10px; font-weight:bold; font-size: 11px;">
+                                        <span class="me-3">ARA TOPLAM</span>
+                                        <span t-out="current_subtotal" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </t>
+                    </t>
+                </tbody>
+            </table>
+        </template>
+    </data>
+</odoo>
