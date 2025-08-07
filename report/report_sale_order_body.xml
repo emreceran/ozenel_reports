@@ -8,13 +8,15 @@
                 border-top: 1px solid #dee2e6;
                 }
 
+
                 .watermark {
                 position: absolute;
-                top: 30%;
-                left: 20%;
-                width: 60%;
-                opacity: 0.1 !important;
-                z-index: -1;
+                top: 10%;
+                left: 0%;
+                width: 100%;
+                <!--                opacity: 0.1 !important;-->
+                z-index: -100;
+                <!--                border: 1px solid white !importan;-->
                 }
                 .page {
                 position: relative;
@@ -57,7 +59,10 @@
                     </tr>
 
                     <tr>
+
                         <td colspan="6" style="padding-top: 20px; padding-bottom: 20px;">
+                            <img src="/ozenel_reports/static/img/larkalogo_watermark.jpeg" class="watermark border-0"/>
+
                             <h4 style="font-size: 14px; margin:0;">TEKLİF MALZEME LİSTESİ</h4>
                         </td>
                     </tr>
@@ -67,13 +72,14 @@
                                 <table style="width: 100%; color: white; text-transform: uppercase; font-size: 10px; font-weight: bold;">
                                     <tbody>
                                         <tr>
-                                            <td class="text-start" style="width: 38%; padding: 8px;  border-right: 1px solid #3a5a7b;">Malzeme İsmi Ve Özellikleri</td>
-                                            <td class="text-center" style="width: 12%;  padding: 8px; border-right: 1px solid #3a5a7b;">Marka</td>
-                                            <td class="text-center" style="width: 10%; padding: 8px; border-right: 1px solid #3a5a7b;">Miktarı</td>
-                                            <td class="text-center" style="width: 10%; padding: 8px; border-right: 1px solid #3a5a7b;">Birim</td>
-                                            <td class="text-center" style="width: 15%; padding: 8px; border-right: 1px solid #3a5a7b;">Birim Fiyatı</td>
+                                            <td class="text-start" style="width: 38%; padding: 8px; border-right: 2px solid white;">Malzeme İsmi Ve Özellikleri</td>
+                                            <td class="text-center" style="width: 12%; padding: 8px; border-right: 2px solid white;">Marka</td>
+                                            <td class="text-center" style="width: 10%; padding: 8px; border-right: 2px solid white;">Miktarı</td>
+                                            <td class="text-center" style="width: 10%; padding: 8px; border-right: 2px solid white;">Birim</td>
+                                            <td class="text-center" style="width: 15%; padding: 8px; border-right: 2px solid white;">Birim Fiyatı</td>
                                             <td class="text-center" style="width: 15%; padding: 8px;">Toplam Fiyat</td>
                                         </tr>
+
                                     </tbody>
                                 </table>
                             </div>
