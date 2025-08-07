@@ -132,7 +132,7 @@
                                 <tbody>
                                     <tr>
                                         <td class="text-start"><strong>GENEL TOPLAM :</strong></td>
-                                        <td class="text-end"><strong style="white-space: nowrap;margin-right:10px;"> <span t-field="doc.amount_total" /></strong></td>
+                                        <td class="text-end"><strong style="white-space: nowrap;margin-right:12mm;"> <span t-field="doc.amount_total" /></strong></td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -6,22 +6,61 @@
                 .bordered-tbody > tbody > tr {
                 border-top: 1px solid #dee2e6;
                 }
+
+
+                .watermark {
+                position: absolute;
+                top: 10%;
+                left: 0%;
+                width: 100%;
+                <!--                opacity: 0.1 !important;-->
+                z-index: -100;
+                <!--                border: 1px solid white !importan;-->
+                }
+                .page {
+                position: relative;
+                }
+
             </style>
+
+
             <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)" />
             <t t-set="lines_to_report" t-value="doc._get_order_lines_to_report()"/>
 
             <table class="table table-borderless bordered-tbody mx-auto" style="width: 90%;">
                 <thead style="display: table-header-group;">
                     <tr>
-                        <td colspan="2" style="padding: 0 0 20px 0;">
+                        <td colspan="1" style="padding: 0 0 20px 0;">
                             <img t-if="res_company.logo" t-att-src="image_data_uri(res_company.logo)" alt="Logo" style="max-height:100px;" />
                         </td>
-                        <td colspan="2" class="text-end" style="font-size:11px; line-height: 1.5; padding: 0 0 20px 0; vertical-align: top;">
-                            </td>
+                        <td colspan="5" class="text-end" style="font-size:11px; margin-top:20px; line-height: 1.5; padding: 0 0 20px 0; vertical-align: top;">
+                            <div  style="font-weight:bold; text-transform: uppercase;">
+                                <span> ÖZENEL ENERJİ MÜH. ELEKTRİK İNŞ. TURİZM SAN. TİC. LTD. ŞTİ.</span>
+                            </div>
+                            <div >
+                                <span> Fevzi çakmak mh. 10644 sk. no:42 Karatay/KONYA</span>
+                            </div>
+                            <div t-if="res_company.vat">
+                                Selçuk V.D. <span t-field="res_company.vat"/>
+                            </div>
+                            <div class="">
+                                <strong t-if="res_company.phone">
+                                    <!--                                    <i class="fa fa-phone" role="img" aria-label="Phone" title="Phone"/> -->
+                                    <span t-field="res_company.phone"/>
+                                </strong>
+                                <strong t-if="res_company.website" class="ms-3">
+                                    <!--                                    <i class="fa fa-globe" role="img" aria-label="Website" title="Website"/> -->
+                                    <span t-field="res_company.website"/>
+                                </strong>
+                            </div>
+                        </td>
                     </tr>
 
                     <tr>
-                        <td colspan="4" style="padding-top: 20px; padding-bottom: 20px;">
+
+                        <td colspan="6" style="padding-top: 20px; padding-bottom: 20px;">
+                            <img src="/ozenel_reports/static/img/larkalogo_watermark.jpeg" class="watermark border-0"/>
+
                             <h4 style="font-size: 14px; margin:0;">TEKLİF MALZEME LİSTESİ</h4>
                         </td>
                     </tr>

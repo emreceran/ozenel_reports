@@ -31,15 +31,14 @@
             <table class="table table-borderless bordered-tbody mx-auto" style="width: 90%;">
                 <thead style="display: table-header-group;">
                     <tr>
-
-                        <td colspan="3" style="padding: 0 0 20px 0;">
+                        <td colspan="2" style="padding: 0 0 20px 0;">
                             <img t-if="res_company.logo" t-att-src="image_data_uri(res_company.logo)" alt="Logo" style="max-height:100px;" />
                         </td>
-                        <td colspan="3" class="text-end" style="font-size:11px; line-height: 1.5; padding: 0 0 20px 0; vertical-align: top;">
-                            <div t-if="res_company.name" style="font-weight:bold; text-transform: uppercase;">
+                        <td colspan="5" class="text-end" style="font-size:11px; margin-top:20px; line-height: 1.5; padding: 0 0 20px 0; vertical-align: top;">
+                            <div  style="font-weight:bold; text-transform: uppercase;">
                                 <span> ÖZENEL ENERJİ MÜH. ELEKTRİK İNŞ. TURİZM SAN. TİC. LTD. ŞTİ.</span>
                             </div>
-                            <div t-if="res_company.street or res_company.city">
+                            <div >
                                 <span> Fevzi çakmak mh. 10644 sk. no:42 Karatay/KONYA</span>
                             </div>
                             <div t-if="res_company.vat">
