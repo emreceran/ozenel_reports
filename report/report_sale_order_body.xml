@@ -102,7 +102,7 @@
                             <t t-set="current_section" t-value="line"/>
                             <t t-set="current_subtotal" t-value="0"/>
                             <tr style="background-color:#0B2B4B; font-weight: bold;">
-                                <td name="td_section_line" colspan="6" style="padding: 5px 8px;">
+                                <td name="td_section_line" colspan="6" style="padding: 5px 8px; font-size: 10px">
                                     <span t-field="line.name" style="color:white;"/>
                                 </td>
                             </tr>
