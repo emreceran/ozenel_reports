@@ -23,6 +23,14 @@ class SaleOrderLine(models.Model):
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
+    # İlgili kişiyi seçmek için yeni bir Many2one alanı ekliyoruz.
+    x_ilgili_kisi = fields.Many2one(
+        'res.partner',
+        string="İlgili Kişi",
+        domain="[('parent_id', '=', partner_id)]",
+        help="Müşteriye bağlı kontak kişisini seçin."
+    )
+
     # _get_lines_for_report_grouped fonksiyonu isteğiniz üzerine kaldırıldı.
 
     def _get_section_subtotals(self):

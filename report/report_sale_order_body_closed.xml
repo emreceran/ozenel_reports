@@ -109,6 +109,19 @@
                         </t>
                 </tbody>
             </table>
+
+             <div class="clearfix" style="margin-top: 3px;">
+                        <div style="position:fixed; right:0; width: 58%; background-color: #0B2B4B; color: white; padding: 10px 10px;">
+                            <table style="width: 100%; font-size: 14px;" class="table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <td class="text-start"><strong>GENEL TOPLAM :</strong></td>
+                                        <td class="text-end"><strong style="white-space: nowrap;margin-right:12mm;"> <span t-field="doc.amount_total" /></strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
         </template>
     </data>
 </odoo>

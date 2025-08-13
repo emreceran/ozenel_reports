@@ -74,40 +74,41 @@
             <field name="dpi">90</field>
         </record>
 
-        <record id="report_teklif_open" model="ir.actions.report">
-            <field name="name">Teklif Açık</field>
-            <field name="model">sale.order</field>
-            <field name="report_type">qweb-pdf</field>
-            <field name="report_name">ozenel_reports.report_sale_order_template2</field>
-            <field name="report_file">ozenel_reports.report_sale_order_template2</field>
-            <field name="binding_model_id" ref="sale.model_sale_order"/>
-            <field name="binding_type">report</field>
-            <field name="paperformat_id" ref="ozenel_reports.sale_order_report_paperformat"/>
-        </record>
+<record id="report_teklif_open" model="ir.actions.report">
+    <field name="name">Teklif Açık</field>
+    <field name="model">sale.order</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">ozenel_reports.report_sale_order_template2</field>
+    <field name="report_file">ozenel_reports.report_sale_order_template2</field>
+    <field name="print_report_name">'%s - %s%s' % (object.partner_id.name, object.name, ' - ' + object.client_order_ref if object.client_order_ref else '')</field>
+    <field name="binding_model_id" ref="sale.model_sale_order"/>
+    <field name="binding_type">report</field>
+    <field name="paperformat_id" ref="ozenel_reports.sale_order_report_paperformat"/>
+</record>
 
-        <record id="report_teklif_closed" model="ir.actions.report">
-            <field name="name">Teklif Kapalı</field>
-            <field name="model">sale.order</field>
-            <field name="report_type">qweb-pdf</field>
-            <field name="report_name">ozenel_reports.report_sale_order_template3</field>
-            <field name="report_file">ozenel_reports.report_sale_order_template3</field>
-            <field name="binding_model_id" ref="sale.model_sale_order"/>
-            <field name="binding_type">report</field>
-            <field name="paperformat_id" ref="ozenel_reports.sale_order_report_paperformat"/>
-        </record>
+<record id="report_teklif_closed" model="ir.actions.report">
+    <field name="name">Teklif Kapalı</field>
+    <field name="model">sale.order</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">ozenel_reports.report_sale_order_template3</field>
+    <field name="report_file">ozenel_reports.report_sale_order_template3</field>
+    <field name="print_report_name">'%s - %s%s' % (object.partner_id.name, object.name, ' - ' + object.client_order_ref if object.client_order_ref else '')</field>
+    <field name="binding_model_id" ref="sale.model_sale_order"/>
+    <field name="binding_type">report</field>
+    <field name="paperformat_id" ref="ozenel_reports.sale_order_report_paperformat"/>
+</record>
 
-        <record id="report_teklif_subtotal" model="ir.actions.report">
-            <field name="name">Teklif Bölüm Toplamlı</field>
-            <field name="model">sale.order</field>
-            <field name="report_type">qweb-pdf</field>
-            <field name="report_name">ozenel_reports.report_sale_order_template4</field>
-            <field name="report_file">ozenel_reports.report_sale_order_template4</field>
-            <field name="binding_model_id" ref="sale.model_sale_order"/>
-            <field name="binding_type">report</field>
-            <field name="paperformat_id" ref="ozenel_reports.sale_order_report_paperformat"/>
-        </record>
-
-
+<record id="report_teklif_subtotal" model="ir.actions.report">
+    <field name="name">Teklif Bölüm Toplamlı</field>
+    <field name="model">sale.order</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">ozenel_reports.report_sale_order_template4</field>
+    <field name="report_file">ozenel_reports.report_sale_order_template4</field>
+    <field name="print_report_name">'%s - %s%s' % (object.partner_id.name, object.name, ' - ' + object.client_order_ref if object.client_order_ref else '')</field>
+    <field name="binding_model_id" ref="sale.model_sale_order"/>
+    <field name="binding_type">report</field>
+    <field name="paperformat_id" ref="ozenel_reports.sale_order_report_paperformat"/>
+</record>
 
 
     </data>

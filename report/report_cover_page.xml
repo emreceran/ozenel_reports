@@ -88,8 +88,8 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 15%; font-weight: bold;">VKN/TCKN :</td>
-                                    <td><span t-field="doc.partner_id.vat"/></td>
+                                    <td style="width: 15%; font-weight: bold;">İlgili Kişi :</td>
+                                    <td><span t-field="doc.x_ilgili_kisi.name"/></td>
                                 </tr>
                             </tbody>
                         </table>
