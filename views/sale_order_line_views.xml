@@ -20,6 +20,14 @@
                 <field name="partner_id" position="after">
                     <field name="x_ilgili_kisi"/>
                 </field>
+
+                <xpath expr="//header" position="inside">
+                    <button name="action_preview_sale_report"
+                            string="Önizleme"
+                            type="object"
+                            class="oe_highlight"
+                            icon="fa-eye"/>
+                </xpath>
             </field>
         </record>
     </data>

@@ -63,3 +63,26 @@ class SaleOrder(models.Model):
             })
 
         return section_totals
+
+    def action_preview_sale_report(self):
+        """
+        Bu metod, "Önizleme" butonuna tıklandığında çalışır.
+        Belirtilen raporun URL'ini oluşturur ve yeni bir sekmede açar.
+        """
+        # Metodun tek bir kayıt üzerinde çalıştığından emin olalım.
+        self.ensure_one()
+
+        # Raportun XML tanımındaki 'report_name' alanını buraya yazın.
+        report_name = 'ozenel_reports.report_sale_order_template2'
+
+        # Rapor URL'ini dinamik olarak oluştur.
+        # Format: /report/pdf/<report_name>/<kayıt_id>
+        report_url = f"/report/html/{report_name}/{self.id}"
+
+        # Odoo'nun web arayüzüne bu URL'i yeni bir sekmede açmasını söyleyen
+        # bir 'ir.actions.act_url' aksiyonu döndür.
+        return {
+            'type': 'ir.actions.act_url',
+            'url': report_url,
+
+        }
