@@ -86,3 +86,11 @@ class SaleOrder(models.Model):
             'url': report_url,
 
         }
+
+
+class SaleOrderTemplate(models.Model):
+    _inherit = 'sale.order.template'
+
+    # Teklif konusu için HTML tipinde bir alan ekliyoruz.
+    # HTML tipi, metin içinde formatlama (kalın, liste vb.) yapmanıza olanak tanır.
+    quotation_subject = fields.Html(string='Teklif Konusu')

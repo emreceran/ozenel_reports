@@ -30,5 +30,18 @@
                 </xpath>
             </field>
         </record>
+
+         <record id="sale_order_template_view_form_inherit_subject" model="ir.ui.view">
+            <field name="name">sale.order.template.form.inherit.subject</field>
+            <field name="model">sale.order.template</field>
+            <field name="inherit_id" ref="sale_management.sale_order_template_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Teklif Konusu" name="quotation_subject_page">
+                        <field name="quotation_subject" nolabel="1"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
     </data>
 </odoo>

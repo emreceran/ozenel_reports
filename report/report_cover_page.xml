@@ -99,9 +99,11 @@
                         <div style="border: 1px solid #777; text-align: center; padding: 10px; font-size: 14px; font-weight: bold;">
                             TEKLİF KONUSU
                         </div>
-                        <div style="text-align: center; margin-top: 20px; font-size: 13px; color: #333;">
-                            <p style="margin-bottom: 5px;">Firmamızdan talep ettiğiniz ürünlere ait ayrıntılı fiyat teklifimiz ekte yer almaktadır.</p>
-                            <p style="margin: 0;">Her türlü tamamlayıcı bilgi ihtiyacı ve sorularınız için bize ulaşabilirsiniz.</p>
+                        <div t-if="doc.sale_order_template_id and doc.sale_order_template_id.quotation_subject"
+                             style="text-align: center; margin-top: 20px; font-size: 13px; color: #333;">
+
+                            <span t-field="docs.sale_order_template_id.quotation_subject"/>
+
                         </div>
                     </div>
 
