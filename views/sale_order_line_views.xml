@@ -18,7 +18,7 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
                 <field name="partner_id" position="after">
-                    <field name="x_ilgili_kisi"/>
+                    <field name="ilgili_kisi"/>
                 </field>
 
                 <xpath expr="//header" position="inside">
@@ -27,6 +27,12 @@
                             type="object"
                             class="oe_highlight"
                             icon="fa-eye"/>
+                </xpath>
+
+                <xpath expr="//notebook" position="inside">
+                    <page string="Teklif Konusu" name="quotation_subject_page">
+                        <field name="quotation_subject" nolabel="1"/>
+                    </page>
                 </xpath>
             </field>
         </record>

@@ -71,9 +71,9 @@
                                 <table style="width: 100%; color: white; text-transform: uppercase; font-size: 10px; font-weight: bold;">
                                     <tbody>
                                         <tr>
-                                            <td class="text-start" style="width: 55%; padding: 8px;  border-right: 1px solid #3a5a7b;">Malzeme İsmi Ve Özellikleri</td>
-                                            <td class="text-center" style="width: 15%;  padding: 8px; border-right: 1px solid #3a5a7b;">Marka</td>
-                                            <td class="text-center" style="width: 15%; padding: 8px; border-right: 1px solid #3a5a7b;">Miktarı</td>
+                                            <td class="text-start" style="width: 55%; padding: 8px;  border-right: 2px solid white;">Malzeme İsmi Ve Özellikleri</td>
+                                            <td class="text-center" style="width: 15%;  padding: 8px; border-right: 2px solid white;">Marka</td>
+                                            <td class="text-center" style="width: 15%; padding: 8px; border-right: 2px solid white;">Miktarı</td>
                                             <td class="text-center" style="width: 15%; padding: 8px;">Birim</td>
                                         </tr>
                                     </tbody>
@@ -99,7 +99,7 @@
                         </t>
                         <t t-if="not line.display_type">
                             <tr>
-                                <td style="width: 55%; font-size: 10px;"><span t-field="line.product_id.name"/></td>
+                                <td style="width: 55%; font-size: 10px;"><span t-field="line.name"/></td>
                                 <td class="text-center" style="width: 15%; font-size: 10px;"><span t-field="line.x_brand_name"/></td>
                                 <td class="text-center" style="width: 15%; font-size: 10px;"><span t-field="line.product_uom_qty"/></td>
                                 <td class="text-center" style="width: 15%; font-size: 10px;"><span t-field="line.product_uom"/></td>

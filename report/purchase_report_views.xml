@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
-        <template id="template_sale_order_body_closed">
+        <template id="template_purchase_order_body_closed">
 
             <style type="text/css">
                 .bordered-tbody > tbody > tr {
@@ -26,7 +26,6 @@
 
 
             <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)" />
-            <t t-set="lines_to_report" t-value="doc._get_order_lines_to_report()"/>
 
             <table class="table table-borderless bordered-tbody mx-auto" style="width: 90%;">
                 <thead style="display: table-header-group;">
@@ -88,7 +87,7 @@
                 </thead>
 
                 <tbody class="sale_tbody">
-                    <t t-foreach="lines_to_report" t-as="line">
+                    <t t-foreach="doc.order_line" t-as="line">
                         <t t-if="line.display_type == 'line_section'">
                             <tr style="background-color:#0B2B4B; font-weight: bold;">
                                 <td name="td_section_line" colspan="4" style="padding: 5px 8px;">
@@ -99,29 +98,67 @@
 
                         <t t-if="not line.display_type">
                             <tr>
-                                <td style="width: 55%; font-size: 10px;"><span t-field="line.name"/></td>
+                                <td style="width: 55%; font-size: 10px;"><span t-field="line.name_tail"/></td>
                                 <td class="text-center" style="width: 15%; font-size: 10px;"><span t-field="line.x_brand_name"/></td>
                                 <td class="text-center" style="width: 15%; font-size: 10px;"><span t-field="line.product_uom_qty"/></td>
                                 <td class="text-center" style="width: 15%; font-size: 10px;"><span t-field="line.product_uom"/></td>
                             </tr>
                         </t>
 
-                        </t>
+                    </t>
                 </tbody>
             </table>
 
-             <div class="clearfix" style="margin-top: 3px;">
-                        <div style="position:fixed; right:0; width: 58%; background-color: #0B2B4B; color: white; padding: 10px 10px;">
-                            <table style="width: 100%; font-size: 14px;" class="table-borderless">
-                                <tbody>
-                                    <tr>
-                                        <td class="text-start"><strong>GENEL TOPLAM :</strong></td>
-                                        <td class="text-end"><strong style="white-space: nowrap;margin-right:12mm;"> <span t-field="doc.amount_total" /></strong></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+
         </template>
+
+
+
+
+        <template id="report_purchase_order_template2">
+
+
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.basic_layout">
+
+                        <div class="page">
+
+                            <t t-call="ozenel_reports.template_purchase_order_body_closed"/>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+
+
+        <record id="purchase_order_report_paperformat" model="report.paperformat">
+            <field name="name">Customized Paper Format</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field> <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">5</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">15</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="report_purchase_teklif" model="ir.actions.report">
+            <field name="name">Teklif Kapalı</field>
+            <field name="model">purchase.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">ozenel_reports.report_purchase_order_template2</field>
+            <field name="report_file">ozenel_reports.report_purchase_order_template2</field>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="ozenel_reports.purchase_order_report_paperformat"/>
+        </record>
+
+
     </data>
 </odoo>

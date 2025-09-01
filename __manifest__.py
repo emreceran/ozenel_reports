@@ -15,6 +15,7 @@
         'report/report_sale_order_body_closed.xml',
         'report/report_sale_order_body_subtotal.xml',
         'report/sale_report_views.xml',
+        'report/purchase_report_views.xml',
 
 
     ],

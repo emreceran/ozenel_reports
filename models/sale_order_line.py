@@ -19,15 +19,24 @@ class SaleOrderLine(models.Model):
             )
             line.x_brand_name = brand_value.name if brand_value else ''
 
+    urun_aciklama = fields.Text(string="Ürün Açıklaması", compute="_compute_urun_aciklama", store=True)
+
+    @api.depends('name')
+    def _compute_urun_aciklama(self):
+        for line in self:
+            lines = line.name.split('\n')
+            if len(lines) > 1:
+                line.urun_aciklama = '\n'.join(lines[1:])
+            else:
+                line.urun_aciklama = line.name
+
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     # İlgili kişiyi seçmek için yeni bir Many2one alanı ekliyoruz.
-    x_ilgili_kisi = fields.Many2one(
-        'res.partner',
+    ilgili_kisi = fields.Char(
         string="İlgili Kişi",
-        domain="[('parent_id', '=', partner_id)]",
         help="Müşteriye bağlı kontak kişisini seçin."
     )
 
@@ -84,9 +93,16 @@ class SaleOrder(models.Model):
         return {
             'type': 'ir.actions.act_url',
             'url': report_url,
-
+            'target': 'current',  # <-- Bu satır mevcut pencerede açar
         }
 
+    quotation_subject = fields.Html(
+        string='Teklif Konusu',
+        default="""
+                <span>Firmamızdan talep ettiğiniz ürünlere ait ayrıntılı fiyat teklifimiz ekte yer almaktadır.<br>
+                Her türlü tamamlayıcı bilgi ihtiyacı ve sorularınız için bize ulaşabilirsiniz.</span>
+            """
+    )
 
 class SaleOrderTemplate(models.Model):
     _inherit = 'sale.order.template'

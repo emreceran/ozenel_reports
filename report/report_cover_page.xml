@@ -89,7 +89,7 @@
                                 </tr>
                                 <tr>
                                     <td style="width: 15%; font-weight: bold;">İlgili Kişi :</td>
-                                    <td><span t-field="doc.x_ilgili_kisi.name"/></td>
+                                    <td><span t-field="doc.ilgili_kisi"/></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -99,10 +99,9 @@
                         <div style="border: 1px solid #777; text-align: center; padding: 10px; font-size: 14px; font-weight: bold;">
                             TEKLİF KONUSU
                         </div>
-                        <div t-if="doc.sale_order_template_id and doc.sale_order_template_id.quotation_subject"
-                             style="text-align: center; margin-top: 20px; font-size: 13px; color: #333;">
+                        <div style="text-align: center; margin-top: 5px; font-size: 13px; color: #333;">
 
-                            <span t-field="docs.sale_order_template_id.quotation_subject"/>
+                            <span t-field="doc.quotation_subject"/>
 
                         </div>
                     </div>
