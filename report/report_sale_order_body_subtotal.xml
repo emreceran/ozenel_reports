@@ -99,7 +99,7 @@
                         </t>
                         <t t-if="not line.display_type">
                             <tr>
-                                <td style="width: 55%; font-size: 10px;"><span t-field="line.name"/></td>
+                                <td style="width: 55%; font-size: 10px;"><span t-field="line.urun_aciklama"/></td>
                                 <td class="text-center" style="width: 15%; font-size: 10px;"><span t-field="line.x_brand_name"/></td>
                                 <td class="text-center" style="width: 15%; font-size: 10px;"><span t-field="line.product_uom_qty"/></td>
                                 <td class="text-center" style="width: 15%; font-size: 10px;"><span t-field="line.product_uom"/></td>

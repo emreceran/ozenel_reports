@@ -9,10 +9,14 @@
                 <xpath expr="//field[@name='order_line']/list/field[@name='price_subtotal']" position="after">
                     <field name="x_force_page_break" optional="show"/>
                 </xpath>
+
+                <xpath expr="//list" position="attributes">
+                    <attribute name="decoration-danger">price_unit == 0.0</attribute>
+                </xpath>
             </field>
         </record>
 
-         <record id="view_order_form_add_ilgili_kisi_field" model="ir.ui.view">
+        <record id="view_order_form_add_ilgili_kisi_field" model="ir.ui.view">
             <field name="name">sale.order.form.ilgili.kisi</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
@@ -21,12 +25,31 @@
                     <field name="ilgili_kisi"/>
                 </field>
 
-                <xpath expr="//header" position="inside">
+                <xpath expr="//button[@name='action_preview_sale_order']" position="replace">
                     <button name="action_preview_sale_report"
                             string="Önizleme"
                             type="object"
                             class="oe_highlight"
                             icon="fa-eye"/>
+                </xpath>
+
+                <xpath expr="//header" position="inside">
+                    <div class="oe_button_box" name="report_buttons">
+                        <button name="%(report_teklif_open)d"
+                                string="Teklif Açık"
+                                type="action"
+                                class="btn btn-secondary"/>
+
+                        <button name="%(report_teklif_closed)d"
+                                string="Teklif Kapalı"
+                                type="action"
+                                class="btn btn-secondary"/>
+
+                        <button name="%(report_teklif_subtotal)d"
+                                string="Teklif Bölüm Toplamlı"
+                                type="action"
+                                class="btn btn-secondary"/>
+                    </div>
                 </xpath>
 
                 <xpath expr="//notebook" position="inside">
@@ -37,7 +60,7 @@
             </field>
         </record>
 
-         <record id="sale_order_template_view_form_inherit_subject" model="ir.ui.view">
+        <record id="sale_order_template_view_form_inherit_subject" model="ir.ui.view">
             <field name="name">sale.order.template.form.inherit.subject</field>
             <field name="model">sale.order.template</field>
             <field name="inherit_id" ref="sale_management.sale_order_template_view_form"/>
